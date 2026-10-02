@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-font="sans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <meta name="theme-color" content="#f3f5f8" />
+    <title>Notes</title>
+    <script>
+      try {
+        var s = JSON.parse(localStorage.getItem('notes-app:settings:v2') || '{}')
+        var dark = s.color === 'dark' || ((s.color || 'system') === 'system' && matchMedia('(prefers-color-scheme: dark)').matches)
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light'
+        document.documentElement.dataset.font = s.font || 'sans'
+        document.querySelector('meta[name=theme-color]').content = dark ? '#191b25' : '#f3f5f8'
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
